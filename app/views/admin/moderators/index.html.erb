@@ -1,0 +1,29 @@
+<h1>Moderator's Index</h1>
+
+<table class="table table-bordered table-hover">
+	<thead>
+		
+		<tr>
+			<th>Fullname</th>
+			<th>username</th>
+			<th>created</th>
+			<th>actions</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<% @moderators.each do |m| %>
+		<tr>
+			<td><%= m.fullname %></td>
+			<td><%= m.username %></td>
+			<td><%= time_ago_in_words(m.created_at) %> ago</td>
+			<td></td>
+		</tr>
+
+		<% end %>
+	</tbody>
+	
+
+
+</table>
