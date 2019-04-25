@@ -10,11 +10,14 @@ class Admin::ModeratorsController < ApplicationController
 
 	def update
 		@moderator = Moderator.find(params[:id])
-		
+
 		if @moderator.update(moderator_params)
+
+			flash[:notice] = "Moderator was successfully updated"
 			redirect_to admin_moderators_path
 
 		else
+			flash[:alert] = "There is a problem updating moderator"
 			render 'edit'
 		end
 	end
