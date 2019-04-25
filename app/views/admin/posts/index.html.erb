@@ -18,7 +18,7 @@
 		<tr>
 			<!-- Truncate allow us to cut down long sentence -->
 			<td><%= truncate(p.title, length: 60, separate: '') %></td>
-			<td><%= p.publish %></td>
+			<td><%=  status_converter(p.publish, truthy: 'Active', falsey: 'Pending') %></td>
 			<td>
 				<%= link_to 'Edit', edit_admin_post_path(p) %>|
 				<%= link_to 'Show', admin_post_path(p) %>|
