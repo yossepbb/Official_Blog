@@ -1,7 +1,9 @@
 class Admin::PostsController < Admin::ApplicationController
 
   def index
-    @posts = Post.all
+    # affichage des posts par ordre desc
+    @posts = Post.all.order(id: :desc)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   def new
