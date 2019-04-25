@@ -8,5 +8,5 @@
 
 moderator = Moderator.create(
 	fullname: "Joseph BINYOUM",
-	username: "yossep",
-	password: "africa")
+	username: "yossep@munngano.com",
+	password: "12345678")
