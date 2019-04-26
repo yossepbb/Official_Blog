@@ -5,8 +5,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   validates :title, presence: true
   validates :content, presence: true
-  validates :publish, presence: true
-
+  
   # self bc it belongs to post's model
   def self.matching_title_or_content(search)
 

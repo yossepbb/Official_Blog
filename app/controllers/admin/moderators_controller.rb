@@ -1,5 +1,8 @@
 class Admin::ModeratorsController < Admin::ApplicationController
 
+	def new
+		@moderator = Moderator.new
+	end
 	def index
 		@moderators = Moderator.all
 	end
