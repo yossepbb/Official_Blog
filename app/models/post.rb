@@ -8,4 +8,5 @@ class Post < ApplicationRecord
 
   	where("title LIKE ? OR content LIKE ?", "%#{search}%", "%#{search}%")
   end
+
 end
