@@ -4,7 +4,7 @@ class Admin::PostsController < Admin::ApplicationController
     # affichage des posts par ordre desc
     # requete pour rechercher dans la base de données un post avec le titre ou le contenu correspondant aux params[:search]
     if params[:search].present?
-      @posts = Post.where("title LIKE ? OR content LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(10)
+      @posts = Post.matching_title_or_content(params[:search]).page(params[:page]).per(10)
     else
       @posts = Post.all.order(id: :desc).page(params[:page]).per(10)
     end
