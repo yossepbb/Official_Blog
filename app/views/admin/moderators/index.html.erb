@@ -17,7 +17,7 @@
 		<tr>
 			<td><%= m.fullname %></td>
 			<td><%= m.username %></td>
-			<td><%= time_ago_in_words(m.created_at) %> ago</td>
+			<td><%= time_ago(m.created_at) %></td>
 			<td>
 				<%= link_to 'Edit', edit_admin_moderator_path(m) %>
 			</td>

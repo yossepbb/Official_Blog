@@ -12,9 +12,11 @@ class Admin::PostsController < Admin::ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
+    @post = Post.create()
   end
 
   def edit
@@ -29,4 +31,8 @@ class Admin::PostsController < Admin::ApplicationController
 
   def destroy
   end
+
+  private
+
+
 end
