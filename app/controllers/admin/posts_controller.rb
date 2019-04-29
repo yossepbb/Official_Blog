@@ -19,6 +19,7 @@ class Admin::PostsController < Admin::ApplicationController
     @post = Post.new(post_params)
     @post.moderator_id = current_moderator.id
 
+
     if @post.save
       redirect_to admin_posts_path, notice: 'Post was successfully created'
     else
