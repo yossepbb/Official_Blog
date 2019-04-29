@@ -1,7 +1,7 @@
 class Admin::TagsController < ApplicationController
   def new
     @tag = Tag.new
-    @tags = Tag.all.order(id: :desc)
+    @tags = Tag.all.order(id: :desc).page(params[:page]).per(10)
   end
 
   def create

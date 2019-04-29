@@ -25,16 +25,22 @@
 		<% @tags.each do |t| %>
 		<tr>
 			<td><%= t.name %></td>
-			<td><%= t.in_use? %></td>
+			<td><%= status_converter(t.in_use?, truthy: "In use", falsey: "not in use") %></td>
 			<td><%= time_ago(t.created_at) %></td>
 			<td>
-				
+				<%= link_to edit_admin_tag_path(t) do %>
+					<button type="button">Edit</button>
+				<% end -%> 
+
+				<%= link_to admin_tag_path(t), method: :delete do %>
+					<button type="button">Delete</button>
+				<% end -%>
 			</td>
 		</tr>
 
 		<% end %>
 	</tbody>
 	
-
-
 </table>
+
+<p><%= paginate @tags %></p>
