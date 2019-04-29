@@ -25,11 +25,14 @@ class Admin::TagsController < ApplicationController
       redirect_to new_admin_tag_path, notice: 'successfully updated'
     else
       flash[:alert]= "There was a problem updating tag"
-      render 'new'
+      render 'edit'
     end
   end
 
   def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    redirect_to new_admin_tag_path, notice: 'Tag was successfully deleted'
   end
 
   private
