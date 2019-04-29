@@ -1,5 +1,7 @@
-class Admin::CommentsController < ApplicationController
+class Admin::CommentsController <Admin::ApplicationController
+
   def index
+  	@comments = Comment.all
   end
 
   def update
