@@ -17,4 +17,8 @@ class Admin::ApplicationController < ActionController::Base
 		end
 	end
 
+	def to_bool(string)
+		ActiveModel::Type::Boolean.new.cast(string)
+	end
+
 end
