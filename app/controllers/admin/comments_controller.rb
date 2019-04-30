@@ -5,6 +5,15 @@ class Admin::CommentsController <Admin::ApplicationController
   end
 
   def update
+  	@comment = Comment.find(params[:id])
+
+  	if @comment.update(status: params[:status])
+  		@comment.save
+  		redirect_to admin_comments_path, notice: "Successfully updated comment"
+  	else
+  		redirect_to admin_comments_path, notice: "There was a problem updating comment"
+  	end
+
   end
 
   def destroy
