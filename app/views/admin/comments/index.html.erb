@@ -1,4 +1,15 @@
 <h1>Comments</h1>
+
+<%= form_tag(admin_comments_path, method: :get) do %>
+
+	<p>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'search' %>
+
+	</p>
+
+<% end %>
+
 <p>
 	<%= link_to 'Approved', admin_comments_path(status: true) %> |
 	<%= link_to 'Unapproved', admin_comments_path(status: false) %>
