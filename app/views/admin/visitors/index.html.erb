@@ -1,0 +1,24 @@
+<h1>Visitors#index</h1>
+
+<% @visitors.each do |v| %>
+
+
+	<p>
+		<%= v.fullname %>
+	</p>
+
+	<p>
+		<%= v.email %>
+	</p>
+
+	<p>
+		<%= time_ago(v.created_at) %>
+	</p>
+
+	<p><%= link_to 'Delete', admin_visitor_path(v), method: :Delete, data:{confirm: 'Are you sure ?'} %></p>
+	<hr>
+
+<% end -%>
+
+<p><%= paginate @visitors %></p>
+

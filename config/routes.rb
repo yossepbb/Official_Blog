@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
     resources :tags, except: [:index]
+    resources :visitors, only: [:index, :destroy]
     resources :comments, only: [:index, :update, :destroy]
   	resources :sessions, only: [:new, :create, :destroy]
   	resources :moderators, only: [:index, :edit, :update]
