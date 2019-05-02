@@ -34,4 +34,10 @@ moderator = Moderator.create(
 		post: post,
 		visitor: visitor)
 
+	message = Message.create(
+
+		content: Faker::Lorem.paragraph,
+		status: [true, false].sample,
+		visitor: visitor )
+
 end
