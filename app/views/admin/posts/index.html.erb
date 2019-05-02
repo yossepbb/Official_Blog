@@ -1,16 +1,6 @@
 <h1>Admin::Posts#index</h1>
 
-<p><%= link_to 'New post', new_admin_post_path %></p>
-
-<%= form_tag(admin_posts_path, method: :get) do %>
-
-	<p>
-		<%= text_field_tag :search %>
-		<%= submit_tag 'search' %>
-
-	</p>
-
-<% end %>
+ <p> <%= render 'search', route: admin_posts_path %></p>
 
 <table class="table table-bordered table-hover">
 	<thead>
