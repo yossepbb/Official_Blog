@@ -14,6 +14,7 @@
 	<%= link_to 'Approved', admin_comments_path(status: true) %> |
 	<%= link_to 'Unapproved', admin_comments_path(status: false) %>
 </p>
+<hr>
 <% @comments.each do |c| %>
 	<p><b> <%= c.visitor.fullname %></b> posted message on |<b> <%= c.post.title %></b></p>
 
@@ -30,3 +31,5 @@
 	</p>	
 	<hr>
 <% end -%>
+
+<p><%= paginate @comments %></p>

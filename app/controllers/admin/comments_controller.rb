@@ -1,10 +1,11 @@
 class Admin::CommentsController <Admin::ApplicationController
 
   def index
+  	# Rechercher un commentaire a partir d'un mot clé.
   	if params[:search].present?
-  		@comments = Comment.joins(:visitor).where("fullname LIKE ? OR message LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+  		@comments = Comment.joins(:visitor).where("fullname LIKE ? OR message LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(5)
   	else
-  	@comments = Comment.where(status: to_bool(params[:status]))
+  	@comments = Comment.where(status: to_bool(params[:status])).page(params[:page]).per(5)
   	end
 
   end
@@ -12,6 +13,7 @@ class Admin::CommentsController <Admin::ApplicationController
   def update
   	@comment = Comment.find(params[:id])
 
+  	# Update a comment status
   	if @comment.update(status: params[:status])
   		@comment.save
   		redirect_to admin_comments_path, notice: "Successfully updated comment"
