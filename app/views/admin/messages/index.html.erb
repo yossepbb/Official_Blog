@@ -2,14 +2,13 @@
 
 <% @messages.each do |m| %>
 
-<% m.status == false ? weight = 'font-weight :bold' : weight = 'font-weight :normal' %>
+<% m.status == false ? weight = 'font-weight:bold' : weight = 'font-weight:normal' %>
 
-	<p style=<%="#{weight}"%>>
+	<p style= <%= "#{weight}" %> >
 		<%= m.visitor.fullname %><br>
 		<%= truncate(m.content, length: 60, separator: '') %><br>
 		<%= status_converter(m.status, truthy: "Read", falsey: "Un-read") %><br>
 		<%= time_ago(m.created_at) %> <br>
-		
 	</p>
 	
 	<p>
