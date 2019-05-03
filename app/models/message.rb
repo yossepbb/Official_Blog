@@ -5,4 +5,8 @@ class Message < ApplicationRecord
 
   	joins(:visitor).where("fullname LIKE ? OR content LIKE ?", "%#{params}%", "%#{params}%")
   end
+
+  def mark_read
+  		update(status: true) if status == false
+  end
 end
