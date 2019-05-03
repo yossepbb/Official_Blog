@@ -5,7 +5,7 @@ class Admin::MessagesController < Admin::ApplicationController
  		@messages = Message.matching_fullname_or_content(params[:search]).page(params[:page]).per(5)
 
  	else
-  		@messages = Message.all.order(:desc).page(params[:page]).per(5)
+  		@messages = Message.all.order(id: :desc).page(params[:page]).per(5)
  	end
 
   end

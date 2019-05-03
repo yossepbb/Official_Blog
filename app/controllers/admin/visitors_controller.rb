@@ -1,7 +1,7 @@
 class Admin::VisitorsController < Admin::ApplicationController
 
   def index
-  	@visitors = Visitor.all.order(:desc).page(params[:page]).per(5)
+  	@visitors = Visitor.all.order(id: :desc).page(params[:page]).per(5)
   end
 
   def destroy

@@ -1,2 +1,23 @@
 <h1>Notifications#index</h1>
-<p>Find me in app/views/admin/notifications/index.html.erb</p>
+
+<% @visitor_notifications.each do |n| %>
+
+	<p>
+		<%=  "#{n.notifiable.fullname} added as a new visitor #{time_ago(n.notifiable.created_at)}" %>
+		<%= link_to 'Dismiss', admin_notification_path(n), method: :delete, data:{confirm: 'Are you sure ?'} %>
+	</p>
+
+<% end -%>
+
+<hr>
+
+<% @comment_notifications.each do |c| %>
+
+	<p>
+		<%=  "#{c.notifiable.visitor.fullname} added a comment #{time_ago(c.notifiable.created_at)}" %>
+		<%= link_to 'Dismiss', admin_notification_path(c), method: :delete, data:{confirm: 'Are you sure ?'} %>
+	</p>
+
+<% end -%>
+
+
