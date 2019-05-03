@@ -1,7 +1,14 @@
 <h1>Notifications#index</h1>
 
-<% @visitor_notifications.each do |n| %>
 
+<%= 
+	if Notification.any?
+		link_to 'Dismiss all', dismiss_all_notifications_path, method: :delete
+	end
+
+%>
+
+<% @visitor_notifications.each do |n| %>
 	<p>
 		<%=  "#{n.notifiable.fullname} added as a new visitor #{time_ago(n.notifiable.created_at)}" %>
 		<%= link_to 'Dismiss', admin_notification_path(n), method: :delete, data:{confirm: 'Are you sure ?'} %>

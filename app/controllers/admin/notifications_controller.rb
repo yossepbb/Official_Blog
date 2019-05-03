@@ -10,4 +10,9 @@ class Admin::NotificationsController < Admin::ApplicationController
 
   	redirect_to admin_notifications_path, notice: 'Successfully delete'
   end
+
+  def delete_all
+  	Notification.delete_all
+  	redirect_to admin_notifications_path, notice: 'All notifications deleted Successfully'
+  end
 end

@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   	resources :moderators, only: [:index, :edit, :update]
   end
 
+  match 'dismiss_all_notifications', to: 'admin/notifications#delete_all', via: :delete
+
 end
