@@ -6,9 +6,7 @@ class Admin::TagsController < ApplicationController
 
   def create
     tag_params[:name].split(',').map do | n|
-
-        Tag.new(name: n).save
-        
+        Tag.new(name: n).save    
     end
 
     redirect_to new_admin_tag_path, notice: "Tag was successful ceated"

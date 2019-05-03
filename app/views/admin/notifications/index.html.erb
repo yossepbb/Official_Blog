@@ -1,6 +1,6 @@
 <h1>Notifications#index</h1>
 
-
+<!-- delete all notifications when click on this link -->
 <%= 
 	if Notification.any?
 		link_to 'Dismiss all', dismiss_all_notifications_path, method: :delete
@@ -8,6 +8,7 @@
 
 %>
 
+<!-- display all notifications -->
 <% @visitor_notifications.each do |n| %>
 	<p>
 		<%=  "#{n.notifiable.fullname} added as a new visitor #{time_ago(n.notifiable.created_at)}" %>
@@ -18,6 +19,7 @@
 
 <hr>
 
+<!-- display all notifications's visitor -->
 <% @comment_notifications.each do |c| %>
 
 	<p>

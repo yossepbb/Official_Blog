@@ -5,7 +5,7 @@ class Admin::CommentsController <Admin::ApplicationController
   	if params[:search].present?
   		@comments = Comment.matching_fullname_or_message(params[:search]).page(params[:page]).per(5)
   	else
-  	@comments = Comment.where(status: to_bool(params[:status])).page(params[:page]).per(5)
+  	 @comments = Comment.where(status: to_bool(params[:status])).page(params[:page]).per(5)
   	end
 
   end

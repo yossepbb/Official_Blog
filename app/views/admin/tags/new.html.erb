@@ -1,7 +1,8 @@
 <h1>Admin::Tags#new</h1>
-<p> <%= link_to 'Home', login_path %></p>
-<%= form_for [:admin, @tag] do |f| %>
 
+<p> <%= link_to 'Home', admin_posts_path %></p>
+
+<%= form_for [:admin, @tag] do |f| %>
 	<p>
 		<%= f.text_area :name, placeholder: 'e.g Ruby, python, Php' %><br>
 		<%= f.submit %>
@@ -36,7 +37,6 @@
 				<%= create_deletable_button(t) %>
 			</td>
 		</tr>
-
 		<% end %>
 	</tbody>
 	

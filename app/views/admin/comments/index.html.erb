@@ -1,14 +1,18 @@
 <h1>Comments</h1>
 
+<!-- Partial personnalisable selon la route que l'on veut matcher -->
 <p> <%= render 'search', route: admin_comments_path %> </p>
 
 <p>
 	<%= link_to 'Approved', admin_comments_path(status: true) %> |
 	<%= link_to 'Unapproved', admin_comments_path(status: false) %>
 </p>
+
 <hr>
+
 <% @comments.each do |c| %>
-	<p><b> <%= c.visitor.fullname %></b> posted message on |<b> <%= c.post.title %></b></p>
+
+	<p><b><%= c.visitor.fullname %></b> posted message on |<b> <%= c.post.title %></b></p>
 
 	<p>
 		<%= c.message %><br>
@@ -20,8 +24,10 @@
 				link_to 'approve', admin_comment_path(c, status: true), method: :put 
 			end
 		%>
-	</p>	
+	</p>
+
 	<hr>
-<% end -%>
+
+<% end %>
 
 <p><%= paginate @comments %></p>
