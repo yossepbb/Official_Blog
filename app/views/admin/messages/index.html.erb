@@ -1,5 +1,8 @@
 <h1>Messages#index</h1>
 
+<p> <%= render 'search', route: admin_messages_path %></p>
+
+<hr>
 <% @messages.each do |m| %>
 
 <% m.status == false ? weight = 'font-weight:bold' : weight = 'font-weight:normal' %>
@@ -25,6 +28,7 @@
 			end
 		%>
 	</p>
+	<hr>
 <% end %>
 
 <%= paginate @messages %>

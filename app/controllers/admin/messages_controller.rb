@@ -1,11 +1,17 @@
 class Admin::MessagesController < Admin::ApplicationController
   def index
- 	
-  	@messages = Message.all.order(:desc).page(params[:page]).per(5)
+ 	if params[:search].present?
+ 		
+ 		@messages = Message.matching_fullname_or_content(params[:search]).page(params[:page]).per(5)
+
+ 	else
+  		@messages = Message.all.order(:desc).page(params[:page]).per(5)
+ 	end
 
   end
 
   def show
+
   end
 
   def update
@@ -24,4 +30,6 @@ class Admin::MessagesController < Admin::ApplicationController
   	redirect_to admin_messages_path, notice: 'Message was Successfully deleted'
 
   end
+
+
 end
