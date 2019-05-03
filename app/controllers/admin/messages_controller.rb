@@ -1,12 +1,7 @@
 class Admin::MessagesController < Admin::ApplicationController
   def index
-  	begin
-  		@messages = Message.all.order(:desc).page(params[:page])
-
-  	rescue StandardError => e
-
-  		print e
-  	end
+ 	
+  	@messages = Message.all.order(:desc).page(params[:page]).per(5)
 
   end
 
