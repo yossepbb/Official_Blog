@@ -1,4 +1,4 @@
-class Admin::TagsController < ApplicationController
+class Admin::TagsController < Admin::ApplicationController
   def new
     @tag = Tag.new
     @tags = Tag.all.order(id: :desc).page(params[:page]).per(10)
