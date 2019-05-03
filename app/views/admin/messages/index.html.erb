@@ -5,9 +5,8 @@
 <hr>
 <% @messages.each do |m| %>
 
-<% m.status == false ? weight = 'font-weight:bold' : weight = 'font-weight:normal' %>
+	<p style= <%= message_weight(m) %> >
 
-	<p style= <%= "#{weight}" %> >
 		<%= m.visitor.fullname %><br>
 		<%= truncate(m.content, length: 60, separator: '') %><br>
 		<%= status_converter(m.status, truthy: "Read", falsey: "Un-read") %><br>
@@ -18,15 +17,8 @@
 		<%= link_to 'Delete', admin_message_path(m), method: :delete, data:{confirm: 'Are you sure ?'} %> | <%= link_to 'Show', admin_message_path(m) %>
 	</p>
 
-	<p>
-		
-		<%= 
-			if m.status == true
-				link_to 'Un-read', admin_message_path(m, status: false), method: :put
-			else
-				link_to 'Read', admin_message_path(m, status: true), method: :put
-			end
-		%>
+	<p>	
+		<%= build_read_status_link(m) %>
 	</p>
 	<hr>
 <% end %>
