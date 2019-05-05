@@ -9,4 +9,5 @@ class Admin::VisitorsController < Admin::ApplicationController
   	@visitor.destroy
   	redirect_to admin_visitors_path, notice: 'Successfully deleted visitor'
   end
+
 end

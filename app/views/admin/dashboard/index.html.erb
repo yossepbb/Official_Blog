@@ -1,6 +1,7 @@
 <h1>Dashboard</h1>
 <h2>Posts</h2>
 
+<!-- display posts -->
 <%= link_to 'Create new post', new_admin_post_path %>
 
 <table class="table table-bordered table-hover">
@@ -32,7 +33,7 @@
 	</tbody>
 </table>
 
-
+<!-- Display comments -->
 <h2>Comments</h2>
 
 <%= link_to 'List all comments', admin_comments_path %>
@@ -40,6 +41,8 @@
 <% @comments.each do |c| %>
 	<p>
 		<%= c.visitor.fullname %>
+	</p>
+	<p>
 		<%= truncate(c.message, length: 125, separator: "") %>
 	</p>
 	<p>
@@ -51,6 +54,7 @@
 <% end -%>
 
 
+<!-- display visitor -->
 <h2>Visitors</h2>
 
 <table class="table table-bordered table-hover">
@@ -58,7 +62,7 @@
 		
 		<tr>
 			<th>#</th>
-			<th>Fullname</th>
+			<th>Full name</th>
 			<th>Email</th>
 			<th>Created</th>
 			<th>Actions</th>
@@ -67,15 +71,14 @@
 	</thead>
 	<tbody>
 		<% @visitors.each_with_index do |v, index| %>
+
 		<tr>
-			<!-- Truncate allow us to cut down long sentence -->
 			<td><%= index + 1 %></td>
-			<td><%=  v.fullname%></td>
-			<td><%=  v.email %></td>
+			<td><%= v.fullname%></td>
+			<td><%= v.email %></td>
 			<td><%= time_ago(v.created_at) %></td>
 			<td>
-				<%= link_to 'delete', admin_visitor_path(v), method: :delete, data: {confirm: 'Are you sure ?'} %>
-				
+				<%= link_to 'delete', admin_visitor_path(v), method: :delete, data: {confirm: 'Are you sure ?'} %>	
 			</td>
 		</tr>
 

@@ -1,4 +1,4 @@
-<h1>Admin::Tags#new</h1>
+<h1>Tags#new</h1>
 
 <p> <%= link_to 'Home', admin_posts_path %></p>
 
@@ -34,8 +34,9 @@
 					<button type="button">Edit</button>
 				<% end %> 
 
-				<%= create_deletable_button(t) %>
-			</td>
+				<%= link_to admin_tag_path(t), method: :delete, data:{confirm: 'Are you sure ?'} do %>
+					<button type="button">delete</button>
+				<% end %>
 		</tr>
 		<% end %>
 	</tbody>
