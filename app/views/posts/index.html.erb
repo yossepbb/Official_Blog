@@ -1,0 +1,24 @@
+<h1>Posts#index</h1>
+
+<% @posts.each do |p| %>
+
+	<p>
+		<%= truncate(p.title, length: 70, separator: ' ') %><br>
+		<%= time_ago(p.created_at)%><br>
+	</p>
+
+	<p>
+		<%= truncate(p.content, length: 104, separator: ' ') %> <%=  link_to 'Read More', post_path(p) %>
+	</p>
+
+	<p>
+		<% p.tags.each do | t | %>
+
+			<%= link_to t.name, ' #' %>
+		<% end %>
+	</p>
+
+<% end %>
+
+<%= paginate(@posts) %>
+
