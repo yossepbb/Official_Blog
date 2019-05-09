@@ -11,12 +11,17 @@
 		<%= truncate(p.content, length: 104, separator: ' ') %> <%=  link_to 'Read More', post_path(p) %>
 	</p>
 
-	<p>
-		<% p.tags.each do | t | %>
+	<% if Setting.tag_visible? %>
+		<p>
+			<% p.tags.each do | t | %>
 
-			<%= link_to t.name, ' #' %>
-		<% end %>
-	</p>
+				<%= link_to t.name, posts_path(tag: t.name) %>
+			<% end %>
+		</p>
+
+	<% end -%>
+
+	<hr>
 
 <% end %>
 
