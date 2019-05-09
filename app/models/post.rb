@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  scope :published, -> {where(publish:true).order(id: :desc)}
+
   
   # self bc it belongs to post's model
   # Method a find a post filter by name and content
