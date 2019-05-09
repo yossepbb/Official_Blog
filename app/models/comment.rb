@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :visitor, required: false
   has_many :notifications, as: :notifiable, dependent: :destroy
 
+  validates :message, presence: true
+
   # permet de specifier les valeurs de variables que voudrait voir ou manipuler
   scope :approved, -> {where status: true }
 
