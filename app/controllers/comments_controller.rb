@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
   		flash[:notice] = " Successfully created new comment"
   	else
   		flash[:alert] = 'There was a problem creating a new comment'
+  		set_visitor_sessions
   	end
   	redirect_to posts_path()
   end
@@ -28,7 +29,12 @@ class CommentsController < ApplicationController
   end
 
   def visitor
-  	VisitorCommentService.new(visitor_comments_params).visitor
+  	# we don't insert in the data base if there are errors
+  	@visitor ||= VisitorCommentService.new(visitor_comments_params).visitor
+  end
+  
+  def set_visitor_sessions
+  	session[:visitor_errors] = visitor.errors.full_messages
   end
 
 end
