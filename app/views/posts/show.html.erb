@@ -15,12 +15,34 @@
 
 	<p>
 		<% @post.comments.each_with_index do |comment, index| %>
-			<%= comment.message %><b><%= double_digit_number(index) %></b><br>
+			<%= comment.message %><b>  <%= double_digit_number(index) %></b><br>
 			<b><%= comment.visitor.fullname %> </b> commented: <%= time_ago(@post.created_at) %>
 		<% end %>
 	</p>
 <hr>
 
+<h3>Have something to say</h3>
+<%= form_for @visitor_comment, url: comments_path do |f| %>
+		<p>
+			<%= f.label :fullname %><br>
+			<%= f.text_field :fullname %>
+		</p>
 
+		<p>
+			<%= f.label :email%><br>
+			<%= f.text_field :email %>
+		</p>
 
+		<%= f.fields_for :comments do |c| %>
+
+			<%= c.label :message %><br>
+			<%= c.text_area :message %>
+
+		<% end %>
+
+		<p>
+			<%= f.submit 'Add comment' %>
+		</p>	
+
+<% end %>
 	
