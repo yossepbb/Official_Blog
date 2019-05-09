@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_02_110944) do
+ActiveRecord::Schema.define(version: 2019_05_09_125409) do
 
   create_table "comments", force: :cascade do |t|
     t.text "message"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.integer "post_id"
     t.integer "visitor_id"
     t.datetime "created_at", null: false

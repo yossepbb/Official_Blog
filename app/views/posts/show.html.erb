@@ -16,7 +16,7 @@
 	<p>
 		<% @post.comments.each_with_index do |comment, index| %>
 			<%= comment.message %><b>  <%= double_digit_number(index) %></b><br>
-			<b><%= comment.visitor.fullname %> </b> commented: <%= time_ago(comment.created_at) %>
+			<b><%= comment.visitor.fullname %> </b> commented: <%= time_ago(comment.created_at) %><br>
 		<% end %>
 	</p>
 <hr>
