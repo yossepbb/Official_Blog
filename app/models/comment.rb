@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :post
-  belongs_to :visitor
+  belongs_to :post, required: false
+  belongs_to :visitor, required: false
   has_many :notifications, as: :notifiable, dependent: :destroy
 
   # method pour rechercher un commentaire a partir d'un nom ou mot clé
