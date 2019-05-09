@@ -14,11 +14,12 @@
 <h3>Comments</h3>
 
 <% @post.comments.each_with_index do |comment, index| %>
-
-		<%= comment.message %>
+	<p>
+		<%= comment.message %><b><%= double_digit_number(index) %></b><br>
+		<b><%= comment.visitor.fullname %> </b> commented: <%= time_ago(@post.created_at) %>
+	</p>
 
 <% end %>
 
-<p>
+
 	
-</p>
