@@ -35,6 +35,7 @@ class CommentsController < ApplicationController
   
   def set_visitor_sessions
   	session[:visitor_errors] = visitor.errors.full_messages
+  	session[:visitor_params] = visitor_comments_params
   end
 
 end
