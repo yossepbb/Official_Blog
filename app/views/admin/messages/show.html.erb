@@ -3,4 +3,4 @@
 <%= link_to 'Back', admin_messages_path %> 
 <p><b>From: </b><%= @message.visitor.fullname %></p>
 <p><b>When: </b><%= time_ago(@message.created_at) %></p>
-<p><b>Message:</b><%= @message.content %></p>
+<p><b>Message: </b><%= @message.content %></p>

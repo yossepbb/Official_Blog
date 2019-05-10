@@ -1,6 +1,8 @@
 class Message < ApplicationRecord
   belongs_to :visitor
 
+  validates :content, presence: true
+
   # method pour rechercher un message a partir d'un nom ou mot clé
   def self.matching_fullname_or_content(params)
 

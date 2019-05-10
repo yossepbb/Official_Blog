@@ -1,2 +1,41 @@
 <h1>Messages#new</h1>
-<p>Find me in app/views/messages/new.html.erb</p>
+
+<h3>Reply here</h3>
+
+<%= form_for @visitor_message, url: messages_path do |f| %>
+
+		<% if @visitor_message.errors.any? %>
+			<div class="error_explanations">
+				<h2><%= pluralize(@visitor_message.errors.count, "error") %> prohibited this message from sending: </h2>
+
+				<ul>
+					<% @visitor_message.errors.full_messages.each do |message| %> 
+						<li><%= message %></li>
+					<% end -%>
+				</ul>
+			</div>
+		<% end %>
+		
+		<p>
+			<%= f.label :fullname %><br>
+			<%= f.text_field :fullname %>
+		</p>
+
+		<p>
+			<%= f.label :email%><br>
+			<%= f.text_field :email %>
+		</p>
+
+		<%= f.fields_for :messages do |c| %>
+
+			<%= c.label :content %><br>
+			<%= c.text_area :content %>
+
+		<% end %>
+
+		<p>
+			<%= f.submit 'Send message' %>
+		</p>
+
+<% end -%>
+
