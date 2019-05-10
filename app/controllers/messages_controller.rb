@@ -16,7 +16,6 @@ class MessagesController < ApplicationController
 
   private
 
-
   def strong_params
   	params.require(:visitor).permit(:fullname, :email, messages_attributes: [:content])
   end
