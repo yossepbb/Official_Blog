@@ -1,31 +1,75 @@
 <h1>Posts#index</h1>
 
-<%= link_to 'All posts', posts_path %>
+<div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-12 col-xs-12 profile">
+          <aside>
+            <div class="clearfix">
+              <img src="img/dog.jpg" alt="dog image" class="img-circle profile-image">
 
-<% @posts.each do |p| %>
+              <div class="profile-content">
+                <h4>Kingsley Ijomah</h4>
+                <p>Software Eng. @CODEHANCE</p>
+                <a class="twitter-follow-button"
+                  href="https://twitter.com/kingsleyijomah"
+                  data-show-count="true"
+                  data-lang="en">
+                  Follow @kingsleyijomah
+                </a>
+              </div>
 
-	<p>
-		<%= truncate(p.title, length: 70, separator: ' ') %><br>
-		<%= time_ago(p.created_at)%><br>
-	</p>
+              <hr class="hidden-xs hidden-sm">
 
-	<p>
-		<%= truncate(p.content, length: 104, separator: ' ') %> <%=  link_to 'Read More', post_path(p) %>
-	</p>
+              <div class="social-icons">
+                <ul class="clearfix">
+                  <li><img src="img/social_icons/twitter.png"></li>
+                  <li><img src="img/social_icons/facebook.png"></li>
+                  <li><img src="img/social_icons/linkedin.png"></li>
+                  <li><img src="img/social_icons/googleplus.png"></li>
+                  <li><img src="img/social_icons/pinterest.png"></li>
+                  <li><img src="img/social_icons/email.png"></li>
+                </ul>
+              </div>
+            </div>
 
-	<% if Setting.tag_visible? %>
-		<p>
-			<% p.tags.each do | t | %>
+            <hr class="hidden-md hidden-lg">
 
-				<%= link_to t.name, posts_path(tag: t.name) %>
-			<% end %>
-		</p>
+          </aside>
+        </div>
+        
+        <div class="col-md-8">
+ 			<%= link_to 'All posts', posts_path %>
+          <article>
+          	<% @posts.each do |p| %>
+	            <header><h2><%= truncate(p.title, length: 70, separator: ' ') %></h2></header>
+	            <footer><small><%= time_ago(p.created_at)%></small></footer>
 
-	<% end -%>
+	            <div class="lead">
+	              <%= truncate(p.content, length: 104, separator: ' ') %> <%=  link_to 'Read More', post_path(p) %>
+	            </div>
 
-	<hr>
+	            <footer>
+	              <span class="label label-default">
+	              	<% if Setting.tag_visible? %>
+	              		<% p.tags.each do | t | %>
+							<%= link_to t.name, posts_path(tag: t.name), class: "label label-default"%>
+						<% end %>
+					<% end -%>
+	              </span>
+	            </footer>
+	            <hr>
+	         <% end %>
+          </article>
 
-<% end %>
+          <nav>
+            <ul class="pagination">
+              <li class="active"><%= paginate(@posts) %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
 
-<%= paginate(@posts) %>
+
+
 
